@@ -12,6 +12,8 @@
 		50FF1B94298D60650070DCEB /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B93298D60650070DCEB /* MainController.swift */; };
 		50FF1B99298D60680070DCEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FF1B98298D60680070DCEB /* Assets.xcassets */; };
 		50FF1B9C298D60680070DCEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50FF1B9A298D60680070DCEB /* LaunchScreen.storyboard */; };
+		50FF1BB3298F8D1F0070DCEB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1BB2298F8D1F0070DCEB /* MainView.swift */; };
+		50FF1BB6298F8F530070DCEB /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1BB5298F8F530070DCEB /* MainCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		50FF1B98298D60680070DCEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50FF1B9B298D60680070DCEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50FF1B9D298D60680070DCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50FF1BB2298F8D1F0070DCEB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		50FF1BB5298F8F530070DCEB /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +67,6 @@
 		50FF1BA3298D610E0070DCEB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				50FF1BAF298D628C0070DCEB /* Services */,
 				50FF1BA7298D618A0070DCEB /* Module */,
 				50FF1BA5298D61620070DCEB /* Supporting */,
 			);
@@ -101,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				50FF1BA8298D61A90070DCEB /* Main */,
-				50FF1BA9298D61B40070DCEB /* Detail */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -109,34 +111,10 @@
 		50FF1BA8298D61A90070DCEB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				50FF1BAA298D61CB0070DCEB /* View */,
+				50FF1BB1298F8CFD0070DCEB /* View */,
 				50FF1BAC298D61D80070DCEB /* Controller */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		50FF1BA9298D61B40070DCEB /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				50FF1BAD298D61EC0070DCEB /* View */,
-				50FF1BAE298D61F30070DCEB /* Controller */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		50FF1BAA298D61CB0070DCEB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				50FF1BAB298D61D10070DCEB /* Cell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		50FF1BAB298D61D10070DCEB /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		50FF1BAC298D61D80070DCEB /* Controller */ = {
@@ -147,33 +125,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		50FF1BAD298D61EC0070DCEB /* View */ = {
+		50FF1BB1298F8CFD0070DCEB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				50FF1BB4298F8F370070DCEB /* Cell */,
+				50FF1BB2298F8D1F0070DCEB /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		50FF1BAE298D61F30070DCEB /* Controller */ = {
+		50FF1BB4298F8F370070DCEB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				50FF1BB5298F8F530070DCEB /* MainCell.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		50FF1BAF298D628C0070DCEB /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				50FF1BB0298D62950070DCEB /* Networking */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		50FF1BB0298D62950070DCEB /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networking;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,8 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50FF1B94298D60650070DCEB /* MainController.swift in Sources */,
+				50FF1BB3298F8D1F0070DCEB /* MainView.swift in Sources */,
 				50FF1B90298D60650070DCEB /* AppDelegate.swift in Sources */,
 				50FF1B92298D60650070DCEB /* SceneDelegate.swift in Sources */,
+				50FF1BB6298F8F530070DCEB /* MainCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
