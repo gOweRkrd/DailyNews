@@ -5,9 +5,7 @@ final class MainController: UIViewController {
     // MARK: - Properties
     
     private let mainView = MainView()
-    var items = ["Fist Cell","Second Cell"]
 
-    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -34,7 +32,7 @@ final class MainController: UIViewController {
 extension MainController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +40,7 @@ extension MainController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MainCell else {
             fatalError("Creating cell from HotelsListViewController failed")
         }
-        cell.textLabel?.text = items[indexPath.row]
+//        cell.textLabel?.text = items[indexPath.row]
         
         return cell
     }

@@ -13,7 +13,7 @@ final class MainView: UIView {
         self.backgroundColor = .white
         
         tableView.register(MainCell.self, forCellReuseIdentifier: "cell")
-//        tableView.rowHeight = 65
+        tableView.rowHeight = 100
         addSybView()
         setupConstraints()
     }
@@ -46,7 +46,7 @@ extension MainView {
 // MARK: - Constant Constraints
 
 extension CGFloat {
-    static let myTableViewTopAnchor: CGFloat = 50
+    static let myTableViewTopAnchor: CGFloat = 100
 }
 
 
