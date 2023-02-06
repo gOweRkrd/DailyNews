@@ -1,27 +1,40 @@
 import UIKit
 import SafariServices
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+final class NewsController: UIViewController {
+    
+    // MARK: - Properties
     
     private var viewModels = [NewsTableViewCellViewModel]()
     private var articles = [Article]()
+    private let mainView = NewsView()
+
+    // MARK: - Lifecycle
     
-    private var tableView: UITableView = {
-        let table = UITableView()
-        table.register(NewsTableViewCell.self,
-                       forCellReuseIdentifier:NewsTableViewCell.identifier)
-        return table
-    }()
-    
+    override func loadView() {
+        super.loadView()
+        self.view = mainView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "News"
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        view.backgroundColor = .systemBackground
         
-        APICaller.shared.getTopStories { [weak self ] result in
+        title = "Daily News"
+
+        setupDelegate()
+        fetchTopStories()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupDelegate() {
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+    }
+    // fetch data
+    private func fetchTopStories() {
+        
+        NetworkService.shared.getTopStories { [weak self ] result in
             switch result {
                 case .success(let articles):
                     self?.articles = articles
@@ -33,22 +46,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                         )
                     })
                     DispatchQueue.main.async {
-                        self?.tableView.reloadData()
+                        self?.mainView.tableView.reloadData()
                     }
                 case .failure(let error):
                     print(error)
             }
         }
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-    }
-    // Table
+}
+
+// MARK: - TableViewDataSource
+
+extension NewsController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard  let cell = tableView.dequeueReusableCell(
             withIdentifier: NewsTableViewCell.identifier,
@@ -59,11 +73,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         cell.configure(with: viewModels[indexPath.row])
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let article = articles[indexPath.row]
-        // change screen news
+        // go to the news site
         guard let url = URL(string: article.url ?? "") else {
             return
         }
@@ -71,6 +86,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let vc = SFSafariViewController(url: url)
         present(vc,animated: true)
     }
+}
+
+// MARK: - TableViewDelegate
+
+extension NewsController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150

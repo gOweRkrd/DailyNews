@@ -1,11 +1,9 @@
 import Foundation
 
-// MARK: - NewsModel
-struct APIResponse: Codable {
+struct NetworkModel: Codable {
     let articles: [Article]?
 }
 
-// MARK: - Article
 struct Article: Codable {
     let source: Source
     let title: String
