@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		508DD4A129911309008F1B44 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A029911309008F1B44 /* DetailController.swift */; };
+		508DD4A529911330008F1B44 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A429911330008F1B44 /* DetailView.swift */; };
+		508DD4A8299116A0008F1B44 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A7299116A0008F1B44 /* UIView+AddSubviews.swift */; };
 		50FF1B90298D60650070DCEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B8F298D60650070DCEB /* AppDelegate.swift */; };
 		50FF1B92298D60650070DCEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B91298D60650070DCEB /* SceneDelegate.swift */; };
 		50FF1B94298D60650070DCEB /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B93298D60650070DCEB /* NewsController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		508DD4A029911309008F1B44 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		508DD4A429911330008F1B44 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		508DD4A7299116A0008F1B44 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		50FF1B8C298D60650070DCEB /* DailyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FF1B8F298D60650070DCEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50FF1B91298D60650070DCEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +51,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		508DD49F299112F1008F1B44 /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				508DD4A229911314008F1B44 /* View */,
+				508DD4A329911322008F1B44 /* Controller */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		508DD4A229911314008F1B44 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				508DD4A429911330008F1B44 /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		508DD4A329911322008F1B44 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				508DD4A029911309008F1B44 /* DetailController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		508DD4A629911663008F1B44 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				508DD4A7299116A0008F1B44 /* UIView+AddSubviews.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		50FF1B83298D60650070DCEB = {
 			isa = PBXGroup;
 			children = (
@@ -110,19 +149,20 @@
 		50FF1BA7298D618A0070DCEB /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				50FF1BA8298D61A90070DCEB /* Main */,
+				50FF1BA8298D61A90070DCEB /* NewsMain */,
+				508DD49F299112F1008F1B44 /* DetailScreen */,
 			);
 			path = Module;
 			sourceTree = "<group>";
 		};
-		50FF1BA8298D61A90070DCEB /* Main */ = {
+		50FF1BA8298D61A90070DCEB /* NewsMain */ = {
 			isa = PBXGroup;
 			children = (
 				50FF1BD32990F6BB0070DCEB /* Model */,
 				50FF1BB1298F8CFD0070DCEB /* View */,
 				50FF1BAC298D61D80070DCEB /* Controller */,
 			);
-			path = Main;
+			path = NewsMain;
 			sourceTree = "<group>";
 		};
 		50FF1BAC298D61D80070DCEB /* Controller */ = {
@@ -154,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				50FF1BBE298F9E560070DCEB /* Networking */,
+				508DD4A629911663008F1B44 /* Extension */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -260,7 +301,10 @@
 				50FF1B92298D60650070DCEB /* SceneDelegate.swift in Sources */,
 				50FF1BB9298F9E370070DCEB /* NetworkService.swift in Sources */,
 				50FF1BBD298F9E490070DCEB /* NetworkModel.swift in Sources */,
+				508DD4A529911330008F1B44 /* DetailView.swift in Sources */,
+				508DD4A129911309008F1B44 /* DetailController.swift in Sources */,
 				50FF1BB6298F8F530070DCEB /* NewsTableViewCell.swift in Sources */,
+				508DD4A8299116A0008F1B44 /* UIView+AddSubviews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
