@@ -27,6 +27,7 @@ final class NewsTableViewCell: UITableViewCell {
     private var newsImageView: UIImageView = {
         
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "noPhoto")
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true

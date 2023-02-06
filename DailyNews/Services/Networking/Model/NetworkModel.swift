@@ -1,12 +1,12 @@
-import Foundation
-
 struct NetworkModel: Codable {
     let articles: [Article]?
 }
 
 struct Article: Codable {
     let source: Source
+
     let title: String
+    let author: String?
     let description: String?
     let url: String?
     let urlToImage: String?

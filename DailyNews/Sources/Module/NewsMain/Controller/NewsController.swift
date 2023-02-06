@@ -34,7 +34,7 @@ final class NewsController: UIViewController {
     // fetch data
     private func fetchTopStories() {
         
-        NetworkService.shared.getTopStories { [weak self ] result in
+        NetworkManager.shared.getTopStories { [weak self ] result in
             switch result {
                 case .success(let articles):
                     self?.articles = articles
@@ -78,14 +78,18 @@ extension NewsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let article = articles[indexPath.row]
-        // go to the news site
-        guard let url = URL(string: article.url ?? "") else {
-            return
-        }
+        let detailVC = DetailController()
+        detailVC.data = articles[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
         
-        let vc = SFSafariViewController(url: url)
-        present(vc,animated: true)
+//        let article = articles[indexPath.row]
+        // go to the news site
+//        guard let url = URL(string: article.url ?? "") else {
+//            return
+//        }
+        
+//        let vc = SFSafariViewController(url: url)
+//        present(vc,animated: true)
     }
 }
 

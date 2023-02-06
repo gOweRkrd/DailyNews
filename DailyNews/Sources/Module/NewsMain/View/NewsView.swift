@@ -18,7 +18,7 @@ final class NewsView: UIView {
         
         tableView.register(NewsTableViewCell.self,forCellReuseIdentifier:NewsTableViewCell.identifier)
         
-        addSybView()
+        addSubView()
         setupConstraints()
     }
     
@@ -31,7 +31,7 @@ final class NewsView: UIView {
 
 extension NewsView {
     
-    func addSybView() {
+    func addSubView() {
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
     }
