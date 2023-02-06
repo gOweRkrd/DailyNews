@@ -8,7 +8,7 @@ final class NewsTableViewCell: UITableViewCell {
 
     // MARK: - UI Elements
     
-    private var newsTitleLabel: UILabel = {
+     private var newsTitleLabel: UILabel = {
         
         let label = UILabel()
         label.numberOfLines = 2
@@ -70,6 +70,8 @@ final class NewsTableViewCell: UITableViewCell {
         }
     }
 }
+
+// MARK: - Setup Constrains
 
 private extension NewsTableViewCell {
     

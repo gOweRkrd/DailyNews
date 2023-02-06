@@ -71,6 +71,7 @@ extension NewsController: UITableViewDataSource {
             fatalError()
         }
         cell.configure(with: viewModels[indexPath.row])
+        
         return cell
     }
     
