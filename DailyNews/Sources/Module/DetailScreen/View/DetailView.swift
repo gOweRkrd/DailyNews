@@ -4,8 +4,6 @@ final class DetailView: UIView {
     
     // MARK: - UI Elements
     
-    let activityIndicator = UIActivityIndicatorView(style: .large)
-    
     lazy var detailTitleLabel: UILabel = {
         
         let label = UILabel()
@@ -29,7 +27,7 @@ final class DetailView: UIView {
     lazy var detailSubTitleLabel: UILabel = {
         
         let label = UILabel()
-        label.numberOfLines = 10
+        label.numberOfLines = 4
         label.font = .systemFont(ofSize: 17, weight: .semibold)
         return label
     }()
@@ -58,6 +56,14 @@ final class DetailView: UIView {
         return label
     }()
     
+    lazy var urlButton: UIButton = {
+        
+        let button = UIButton()
+        button.setTitle("Full version news", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -84,14 +90,14 @@ extension DetailView {
         addSubview(detailSubTitleLabel)
         addSubview(dateOfpublicationLabel)
         addSubview(autorLabel)
-        addSubview(urlLabel)
+        addSubview(urlButton)
         
         detailTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         detailImageView.translatesAutoresizingMaskIntoConstraints = false
         detailSubTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         dateOfpublicationLabel.translatesAutoresizingMaskIntoConstraints = false
         autorLabel.translatesAutoresizingMaskIntoConstraints = false
-        urlLabel.translatesAutoresizingMaskIntoConstraints = false
+        urlButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setupConstraints() {
@@ -119,9 +125,9 @@ extension DetailView {
             detailSubTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             detailSubTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
-            urlLabel.topAnchor.constraint(equalTo: detailSubTitleLabel.bottomAnchor, constant:20),
-            urlLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            urlLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            urlButton.topAnchor.constraint(equalTo: detailSubTitleLabel.bottomAnchor, constant:20),
+            urlButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            urlButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
         ])
     }
