@@ -111,7 +111,7 @@ extension DetailView {
             detailImageView.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 25),
             detailImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             detailImageView.widthAnchor.constraint(equalToConstant: 350),
-            detailImageView.heightAnchor.constraint(equalToConstant: 250),
+            detailImageView.heightAnchor.constraint(equalToConstant: 200),
             
             autorLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant:20),
             autorLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),

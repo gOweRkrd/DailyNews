@@ -10,7 +10,7 @@ final class DetailController: UIViewController {
     
     private lazy var webView: WKWebView = {
         let view = WKWebView()
-        view.load(NSURLRequest(url: NSURL(string:(data?.url!)!)! as URL) as URLRequest)
+        view.load(NSURLRequest(url: NSURL(string:(data?.url)!)! as URL) as URLRequest)
         return view
     }()
     
@@ -22,8 +22,7 @@ final class DetailController: UIViewController {
             detailView.detailSubTitleLabel.text = data.description
             detailView.dateOfpublicationLabel.text = data.publishedAt
             detailView.autorLabel.text = data.author
-            detailView.urlLabel.text = data.url
-
+// image download at screen
             guard let imageURL = data.urlToImage else {
                 return
             }
