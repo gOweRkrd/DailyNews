@@ -10,7 +10,8 @@
 		508DD4A129911309008F1B44 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A029911309008F1B44 /* DetailController.swift */; };
 		508DD4A529911330008F1B44 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A429911330008F1B44 /* DetailView.swift */; };
 		508DD4A8299116A0008F1B44 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A7299116A0008F1B44 /* UIView+AddSubviews.swift */; };
-		508DD4AA29922838008F1B44 /* Int+Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4A929922838008F1B44 /* Int+Scaling.swift */; };
+		50E24E8229FA9FD60019A04A /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E24E8129FA9FD60019A04A /* R.swift */; };
+		50E24E8429FAA01E0019A04A /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E24E8329FAA01E0019A04A /* UIColor+extension.swift */; };
 		50FF1B90298D60650070DCEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B8F298D60650070DCEB /* AppDelegate.swift */; };
 		50FF1B92298D60650070DCEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B91298D60650070DCEB /* SceneDelegate.swift */; };
 		50FF1B94298D60650070DCEB /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FF1B93298D60650070DCEB /* NewsController.swift */; };
@@ -27,7 +28,8 @@
 		508DD4A029911309008F1B44 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		508DD4A429911330008F1B44 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		508DD4A7299116A0008F1B44 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
-		508DD4A929922838008F1B44 /* Int+Scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Scaling.swift"; sourceTree = "<group>"; };
+		50E24E8129FA9FD60019A04A /* R.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
+		50E24E8329FAA01E0019A04A /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		50FF1B8C298D60650070DCEB /* DailyNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FF1B8F298D60650070DCEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50FF1B91298D60650070DCEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				508DD4A7299116A0008F1B44 /* UIView+AddSubviews.swift */,
-				508DD4A929922838008F1B44 /* Int+Scaling.swift */,
+				50E24E8329FAA01E0019A04A /* UIColor+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -128,6 +130,7 @@
 				50FF1B98298D60680070DCEB /* Assets.xcassets */,
 				50FF1B9A298D60680070DCEB /* LaunchScreen.storyboard */,
 				50FF1B9D298D60680070DCEB /* Info.plist */,
+				50E24E8129FA9FD60019A04A /* R.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				50FF1B88298D60650070DCEB /* Sources */,
 				50FF1B89298D60650070DCEB /* Frameworks */,
 				50FF1B8A298D60650070DCEB /* Resources */,
+				50EE21C62994C4EA004E30B4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -292,11 +296,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		50EE21C62994C4EA004E30B4 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint && swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50FF1B88298D60650070DCEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E24E8229FA9FD60019A04A /* R.swift in Sources */,
 				50FF1B94298D60650070DCEB /* NewsController.swift in Sources */,
 				50FF1BB3298F8D1F0070DCEB /* NewsView.swift in Sources */,
 				50FF1B90298D60650070DCEB /* AppDelegate.swift in Sources */,
@@ -306,9 +333,9 @@
 				50FF1BBD298F9E490070DCEB /* NetworkModel.swift in Sources */,
 				508DD4A529911330008F1B44 /* DetailView.swift in Sources */,
 				508DD4A129911309008F1B44 /* DetailController.swift in Sources */,
+				50E24E8429FAA01E0019A04A /* UIColor+extension.swift in Sources */,
 				50FF1BB6298F8F530070DCEB /* NewsTableViewCell.swift in Sources */,
 				508DD4A8299116A0008F1B44 /* UIView+AddSubviews.swift in Sources */,
-				508DD4AA29922838008F1B44 /* Int+Scaling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

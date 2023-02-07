@@ -1,5 +1,5 @@
-import UIKit
 import SafariServices
+import UIKit
 
 final class NewsController: UIViewController {
     
@@ -8,21 +8,21 @@ final class NewsController: UIViewController {
     private var viewModels = [NewsTableViewCellViewModel]()
     private var articles = [Article]()
     private let mainView = NewsView()
-
+    
     // MARK: - Lifecycle
     
     override func loadView() {
-        super.loadView()
         self.view = mainView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Daily News"
-
+        title = R.NewsController.title
+        
         setupDelegate()
         fetchTopStories()
+        addedTarget()
     }
     
     // MARK: - Private Methods
@@ -31,28 +31,39 @@ final class NewsController: UIViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
     }
+    
+    private func addedTarget() {
+        mainView.refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        mainView.tableView.reloadData()
+        sender.endRefreshing()
+    }
+    
     // fetch data
     private func fetchTopStories() {
-        
-        NetworkManager.shared.getTopStories { [weak self ] result in
+        NetworkManager.shared.getTopStories { [weak self] result in
             switch result {
-                case .success(let articles):
-                    self?.articles = articles
-                    self?.viewModels = articles.compactMap({
-                        NewsTableViewCellViewModel(
-                            title: $0.title,
-                            subtitle: $0.description ?? "No Description",
-                            imageURL: URL(string: $0.urlToImage ?? "")
-                        )
-                    })
-                    DispatchQueue.main.async {
-                        self?.mainView.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
+            case .success(let articles):
+                self?.articles = articles
+                self?.viewModels = articles.compactMap { article in
+                    NewsTableViewCellViewModel(
+                        title: article.title,
+                        subtitle: article.description ?? R.NewsController.subtitle,
+                        imageURL: URL(string: article.urlToImage ?? "")
+                    )
+                }
+                
+                DispatchQueue.main.async {
+                    self?.mainView.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
+
 }
 
 // MARK: - TableViewDataSource
@@ -64,32 +75,22 @@ extension NewsController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard  let cell = tableView.dequeueReusableCell(
-            withIdentifier: NewsTableViewCell.identifier,
-            for: indexPath
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: NewsTableViewCell.identifier, for: indexPath
         ) as? NewsTableViewCell else {
-            fatalError()
+            fatalError("Failed to dequeue NewsTableViewCell.")
         }
         cell.configure(with: viewModels[indexPath.row])
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let detailVC = DetailController()
         detailVC.data = articles[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
-        
-//        let article = articles[indexPath.row]
-        // go to the news site
-//        guard let url = URL(string: article.url ?? "") else {
-//            return
-//        }
-        
-//        let vc = SFSafariViewController(url: url)
-//        present(vc,animated: true)
     }
 }
 
@@ -101,4 +102,3 @@ extension NewsController: UITableViewDelegate {
         return 150
     }
 }
-

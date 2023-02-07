@@ -14,6 +14,5 @@ struct Article: Codable {
 }
 
 struct Source: Codable {
-    let name : String
+    let name: String
 }
-

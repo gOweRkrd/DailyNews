@@ -1,27 +1,36 @@
 import UIKit
 
 final class NewsView: UIView {
-    
+
     // MARK: - Properties
-    
+
     var tableView: UITableView = {
-        
+
         let tableView = UITableView()
         return tableView
     }()
     
-    // MARK: - Lifecycle
+    var refreshControl: UIRefreshControl = {
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: R.NewsView.refreshControl)
+        return refreshControl
+    }()
     
+    // MARK: - Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
-        
-        tableView.register(NewsTableViewCell.self,forCellReuseIdentifier:NewsTableViewCell.identifier)
-        
+    
+        backgroundColor = Color.mainBackgroundWhite
+
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
+
         addSubView()
         setupConstraints()
+        tableView.addSubview(refreshControl)
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -30,14 +39,13 @@ final class NewsView: UIView {
 // MARK: - Setup Constrains
 
 extension NewsView {
-    
+
     func addSubView() {
-        addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubviews([tableView])
     }
-    
+
     func setupConstraints() {
-        
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: .tableViewTopAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -52,6 +60,3 @@ extension NewsView {
 extension CGFloat {
     static let tableViewTopAnchor: CGFloat = 100
 }
-
-
-
