@@ -8,7 +8,7 @@ final class NewsController: UIViewController {
     private var viewModels = [NewsTableViewCellViewModel]()
     private var articles = [Article]()
     private let mainView = NewsView()
-
+        
     // MARK: - Lifecycle
 
     override func loadView() {
@@ -23,6 +23,7 @@ final class NewsController: UIViewController {
 
         setupDelegate()
         fetchTopStories()
+        addedTarget()
     }
 
     // MARK: - Private Methods
@@ -31,12 +32,16 @@ final class NewsController: UIViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
     }
+    
+    private func addedTarget() {
+        mainView.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+    }
     // fetch data
     private func fetchTopStories() {
 
         NetworkManager.shared.getTopStories { [weak self ] result in
             switch result {
-                case .success(let articles):
+            case .success(let articles):
                     self?.articles = articles
                     self?.viewModels = articles.compactMap({
                         NewsTableViewCellViewModel(
@@ -48,10 +53,18 @@ final class NewsController: UIViewController {
                     DispatchQueue.main.async {
                         self?.mainView.tableView.reloadData()
                     }
-                case .failure(let error):
+            case .failure(let error):
                     print(error)
             }
         }
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [self] in
+            self.mainView.tableView.reloadData()
+            mainView.refreshControl.endRefreshing()
+        }
+    
     }
 }
 

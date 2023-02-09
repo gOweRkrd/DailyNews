@@ -25,7 +25,7 @@ final class NetworkManager {
                 do {
                     let result = try JSONDecoder().decode(NetworkModel.self, from: data)
 
-                    print("Articles: \(result.articles?.count)")
+                    print("Articles: \(String(describing: result.articles?.count))")
                     completion(.success(result.articles!))
                 } catch {
                     completion(.failure(error))

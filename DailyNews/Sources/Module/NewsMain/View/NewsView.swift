@@ -9,7 +9,14 @@ final class NewsView: UIView {
         let tableView = UITableView()
         return tableView
     }()
+    
+    var refreshControl: UIRefreshControl = {
 
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        return refreshControl
+    }()
+    
     // MARK: - Lifecycle
 
     override init(frame: CGRect) {
@@ -20,6 +27,7 @@ final class NewsView: UIView {
 
         addSubView()
         setupConstraints()
+        tableView.addSubview(refreshControl)
     }
 
     required init?(coder: NSCoder) {
@@ -32,8 +40,7 @@ final class NewsView: UIView {
 extension NewsView {
 
     func addSubView() {
-        addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubviews([tableView])
     }
 
     func setupConstraints() {
