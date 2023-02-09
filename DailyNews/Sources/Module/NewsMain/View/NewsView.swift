@@ -1,27 +1,27 @@
 import UIKit
 
 final class NewsView: UIView {
-    
+
     // MARK: - Properties
-    
+
     var tableView: UITableView = {
-        
+
         let tableView = UITableView()
         return tableView
     }()
-    
+
     // MARK: - Lifecycle
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        
-        tableView.register(NewsTableViewCell.self,forCellReuseIdentifier:NewsTableViewCell.identifier)
-        
+
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
+
         addSubView()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -30,14 +30,14 @@ final class NewsView: UIView {
 // MARK: - Setup Constrains
 
 extension NewsView {
-    
+
     func addSubView() {
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     func setupConstraints() {
-        
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: .tableViewTopAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -52,6 +52,3 @@ extension NewsView {
 extension CGFloat {
     static let tableViewTopAnchor: CGFloat = 100
 }
-
-
-

@@ -1,31 +1,31 @@
 import UIKit
 
 final class NewsTableViewCell: UITableViewCell {
-    
+
     // MARK: - Properties
-    
+
     static let identifier = "NewsTableViewCell"
 
     // MARK: - UI Elements
-    
+
      private var newsTitleLabel: UILabel = {
-        
+
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 22, weight: .semibold)
         return label
     }()
-    
+
     private var subTitleLabel: UILabel = {
-        
+
         let label = UILabel()
         label.numberOfLines = 3
         label.font = .systemFont(ofSize: 17, weight: .regular)
         return label
     }()
-    
+
     private var newsImageView: UIImageView = {
-        
+
         let imageView = UIImageView()
         imageView.image = UIImage(named: "noPhoto")
         imageView.layer.cornerRadius = 6
@@ -35,22 +35,22 @@ final class NewsTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     // MARK: - Lifecycle
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         addSubView()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError()
     }
 
     // MARK: - Public Methods
-    
+
     func configure(with viewModel: NewsTableViewCellViewModel) {
         newsTitleLabel.text = viewModel.title
         subTitleLabel.text = viewModel.subtitle
@@ -58,7 +58,7 @@ final class NewsTableViewCell: UITableViewCell {
         if let data = viewModel.imageData {
             newsImageView.image = UIImage(data: data)
         } else if let url = viewModel.imageURL {
-            //fetch image
+            // fetch image
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
                 guard let data = data, error == nil else {
                     return
@@ -75,30 +75,26 @@ final class NewsTableViewCell: UITableViewCell {
 // MARK: - Setup Constrains
 
 private extension NewsTableViewCell {
-    
+
     func addSubView() {
-        contentView.addSubview(newsTitleLabel)
-        contentView.addSubview(newsImageView)
-        contentView.addSubview(subTitleLabel)
-        newsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        newsImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubviews([newsTitleLabel, newsImageView, subTitleLabel])
     }
-    
+
     func setupConstraints() {
         NSLayoutConstraint.activate([
             newsImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .leadingTrailingSize),
-            newsImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -.newsImageViewTrailingAnchor),
+            newsImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.newsImageViewTrailingAnchor),
             newsImageView.widthAnchor.constraint(equalToConstant: .newsImageViewSizeAnchor),
             newsImageView.heightAnchor.constraint(equalToConstant: .newsImageViewSizeAnchor),
-            
-            newsTitleLabel.topAnchor.constraint(equalTo: newsImageView.topAnchor),
-            newsTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: .leadingTrailingSize),
-            newsTitleLabel.trailingAnchor.constraint(equalTo: newsImageView.leadingAnchor,constant: -.leadingTrailingSize),
 
-            subTitleLabel.topAnchor.constraint(equalTo: newsTitleLabel.topAnchor,constant: .subTitleLabelTopAnchor),
-            subTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: .leadingTrailingSize),
-            subTitleLabel.trailingAnchor.constraint(equalTo: newsImageView.leadingAnchor,constant: -.leadingTrailingSize),
+            newsTitleLabel.topAnchor.constraint(equalTo: newsImageView.topAnchor),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .leadingTrailingSize),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: newsImageView.leadingAnchor, constant: -.leadingTrailingSize),
+
+            subTitleLabel.topAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: .subTitleLabelTopAnchor),
+            subTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .leadingTrailingSize),
+            subTitleLabel.trailingAnchor.constraint(equalTo: newsImageView.leadingAnchor, constant: -.leadingTrailingSize)
         ])
     }
 }
@@ -111,5 +107,3 @@ extension CGFloat {
     static let newsImageViewSizeAnchor: CGFloat = 130
     static let subTitleLabelTopAnchor: CGFloat = 65
 }
-
-

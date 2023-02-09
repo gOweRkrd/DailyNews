@@ -1,12 +1,12 @@
 import UIKit
 
 final class NewsTableViewCellViewModel {
-    
+
     let title: String
     let subtitle: String
     let imageURL: URL?
-    var imageData: Data? = nil
-    
+    var imageData: Data?
+
     init(
         title: String,
         subtitle: String,
