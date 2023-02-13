@@ -19,9 +19,9 @@ final class DetailController: UIViewController {
             guard let data = data else { return }
 
             detailView.detailTitleLabel.text = data.title
-            detailView.detailSubTitleLabel.text = data.description
-            detailView.dateOfpublicationLabel.text = data.publishedAt
-            detailView.authorLabel.text = data.author
+            detailView.detailSubTitleLabel.text = data.description ?? "No description"
+            detailView.dateOfpublicationLabel.text = data.publishedAt ?? "Publication date unknown"
+            detailView.authorLabel.text = data.author ?? "The author is unknown"
 // image download at screen
             guard let imageURL = data.urlToImage else {
                 return
