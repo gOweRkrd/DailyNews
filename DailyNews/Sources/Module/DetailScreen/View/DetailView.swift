@@ -8,7 +8,7 @@ final class DetailView: UIView {
         
         let label = UILabel()
         label.numberOfLines = 3
-        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.font = .systemFont(ofSize: .systemFontTwentyTwo, weight: .semibold)
         return label
     }()
     
@@ -28,7 +28,7 @@ final class DetailView: UIView {
         
         let label = UILabel()
         label.numberOfLines = 4
-        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.font = .systemFont(ofSize: .systemFontSeventeen, weight: .semibold)
         return label
     }()
     
@@ -36,7 +36,7 @@ final class DetailView: UIView {
         
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: .systemFontSeventeen, weight: .regular)
         return label
     }()
     
@@ -44,7 +44,7 @@ final class DetailView: UIView {
         
         let label = UILabel()
         label.numberOfLines = 2
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: .systemFontSeventeen, weight: .regular)
         return label
     }()
     
@@ -52,7 +52,7 @@ final class DetailView: UIView {
         
         let label = UILabel()
         label.numberOfLines = 3
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: .systemFontSeventeen, weight: .regular)
         return label
     }()
     
@@ -98,40 +98,57 @@ extension DetailView {
         
         NSLayoutConstraint.activate([
             
-            detailTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
-            detailTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            detailTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            detailTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: .detailTitleLabelTopAnchor),
+            detailTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .twentySizeAnchor),
+            detailTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.twentySizeAnchor),
             
-            detailImageView.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 25),
+            detailImageView.topAnchor.constraint(
+                equalTo: detailTitleLabel.bottomAnchor,
+                constant: .detailImageViewTopAnchor
+            ),
             detailImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            detailImageView.widthAnchor.constraint(equalToConstant: 350),
-            detailImageView.heightAnchor.constraint(equalToConstant: 200),
+            detailImageView.widthAnchor.constraint(equalToConstant: .detailImageViewWidthAnchor),
+            detailImageView.heightAnchor.constraint(equalToConstant: .detailImageViewAnchor),
             
-            authorLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: 20),
-            authorLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            authorLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            authorLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: .twentySizeAnchor),
+            authorLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .twentySizeAnchor),
+            authorLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.twentySizeAnchor),
             
-            dateOfpublicationLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 10),
-            dateOfpublicationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            dateOfpublicationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            dateOfpublicationLabel.topAnchor.constraint(
+                equalTo: authorLabel.bottomAnchor,
+                constant: .dateOfpublicationLabelTopAnchor
+            ),
+            dateOfpublicationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .twentySizeAnchor),
+            dateOfpublicationLabel.trailingAnchor.constraint(
+                equalTo: self.trailingAnchor,
+                constant: -.twentySizeAnchor
+            ),
             
-            detailSubTitleLabel.topAnchor.constraint(equalTo: dateOfpublicationLabel.bottomAnchor, constant: 30),
-            detailSubTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            detailSubTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            detailSubTitleLabel.topAnchor.constraint(
+                equalTo: dateOfpublicationLabel.bottomAnchor,
+                constant: .detailSubTitleLabelTopAnchor
+            ),
+            detailSubTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .twentySizeAnchor),
+            detailSubTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.twentySizeAnchor),
             
-            urlButton.topAnchor.constraint(equalTo: detailSubTitleLabel.bottomAnchor, constant: 20),
-            urlButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            urlButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            urlButton.topAnchor.constraint(equalTo: detailSubTitleLabel.bottomAnchor, constant: .twentySizeAnchor),
+            urlButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .twentySizeAnchor),
+            urlButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.twentySizeAnchor)
             
         ])
     }
 }
 
-// MARK: - Constant Constraints
+// MARK: - Constant
 
 private extension CGFloat {
-    
-    static let imageViewAnchor: CGFloat = 30
-    static let topAnchor: CGFloat = 10
-    static let trailingMargin: CGFloat = -10
+    static let detailTitleLabelTopAnchor: CGFloat = 100
+    static let twentySizeAnchor: CGFloat = 20
+    static let dateOfpublicationLabelTopAnchor: CGFloat = 10
+    static let detailImageViewWidthAnchor: CGFloat = 350
+    static let detailImageViewAnchor: CGFloat = 200
+    static let detailImageViewTopAnchor: CGFloat = 25
+    static let detailSubTitleLabelTopAnchor: CGFloat = 25
+    static let systemFontSeventeen: CGFloat = 17
+    static let systemFontTwentyTwo: CGFloat = 22
 }
