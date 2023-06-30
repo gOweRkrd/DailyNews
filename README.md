@@ -6,7 +6,7 @@ Stack: UIKit, MVC, URLSession
 
 Helpers: SwiftLint
 
-### [API](https://rsttur.ru/api/base-app/map)
+### [API](https://newsapi.org/)
 
 ### Demonstration of the operation of screen and the operation of the application:
 
